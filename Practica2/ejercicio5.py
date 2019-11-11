@@ -1,18 +1,12 @@
-import numpy as np
-import pandas as pd 
-from scipy.io import arff
-import matplotlib.pyplot as plt
-nombre_fichero="basesDeDatos/aux.csv"
-data = pd.read_csv(nombre_fichero)
-fig,axes=plt.subplots(len(data.columns)-1,len(data.columns)-1,constrained_layout=True)
-figsize=(9,6)
-i=0
-for col in data.columns:
-  j=0
-  for col2 in data.columns: 
-    if(col!='class'and col2!='class'):
-      data.plot.scatter(x=col,y=col2,c='class',colormap='viridis',ax=axes[i,j])
-      j=j+1
-  i=i+1
+import pandas as pd
+from sklearn import preprocessing
 
-plt.show()
+le = preprocessing.LabelEncoder()
+nombre_variables = ['viento', 'velocidad_viento', 'periodo_ola_dominante', 'media_ola_dominante','presion','temperatura','clase']
+olas = pd.read_csv('train.csv')
+le.fit(olas['clase'])
+clases_numeros = le.transform(olas['clase'])
+
+olas_df = pd.DataFrame(olas[nombre_variables], columns=nombre_variables)
+
+pd.plotting.scatter_matrix(olas_df, c=clases_numeros, figsize=(8, 8));
