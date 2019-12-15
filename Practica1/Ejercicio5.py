@@ -1,6 +1,6 @@
 import numpy as np
 from _operator import matmul
-file=input("Introduce el nombre del fichero que contiene los votos:")
+file=input("Introduce el fichero que contiene la matriz:")
 file_object  = open(file, "r")
 
 matriz=np.array([line.split(' ') for line in file_object]);

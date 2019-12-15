@@ -5,7 +5,7 @@ file_object  = open(file, "r")
 datos_fichero=np.array([line.split(' ') for line in file_object]);
 for i in datos_fichero:
     i[1]=i[1][:-1]
-escanyos=input("Introduce el numero de escaños a introducir:")
+escanyos=input("Introduce el numero de escanyos a introducir:")
 matriz=np.array([])
 k=0
 for i in datos_fichero:
@@ -25,4 +25,4 @@ while(aux!=0):
     np.put(matriz,matriz.argmax(),0)
     aux=aux-1;
 for i in range(0,np.size(datos_fichero,0)):
-    print("El partido ",datos_fichero[i][0]," ha sacado ",escanyos_finales[i]," escaños")
+    print("El partido ",datos_fichero[i][0]," ha sacado ",escanyos_finales[i]," escanyos")

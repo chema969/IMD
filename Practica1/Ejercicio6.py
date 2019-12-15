@@ -1,5 +1,5 @@
 import numpy as np
-file=input("Introduce el nombre del fichero que contiene los votos:")
+file=input("Introduce el nombre del fichero que contiene el sistema:")
 file_object  = open(file, "r")
 
 matriz=np.array([line.split(' ') for line in file_object]);
